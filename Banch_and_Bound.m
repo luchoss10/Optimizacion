@@ -20,7 +20,7 @@ function [xstar,Jmin] = Banch_and_Bound(c,A,b,xlb,xub,xstar,Jmin)
     end
     % Depth first recursion
     xnlb = xlb; xnlb(idx(1)) = ceil(x(idx(1))); % Take x<--int. greater than x
-    [xstar,Jmin] = ilp_bb_1(c,A,b,xnlb,xub,xstar,Jmin);
+    [xstar,Jmin] = Banch_and_Bound(c,A,b,xnlb,xub,xstar,Jmin);
     xnub = xub; xnub(idx(1)) = floor(x(idx(1))); % Take x<--int. less than x
-    [xstar,Jmin] = ilp_bb_1(c,A,b,xlb,xnub,xstar,Jmin);
+    [xstar,Jmin] = Banch_and_Bound(c,A,b,xlb,xnub,xstar,Jmin);
 end
